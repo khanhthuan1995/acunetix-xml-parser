@@ -1,7 +1,7 @@
 # Acunetix XML results parser by Ramiro Molina modified by Nicolas Hovassapian
 # This script requires openpyxl (https://pypi.python.org/pypi/openpyxl)
 # and python 3.x
-
+from sys import platform
 import os
 import sys
 import glob
@@ -130,7 +130,10 @@ if __name__== '__main__':
                 if sys.argv[1].endswith('\\'):
                     xml_list = glob.glob(sys.argv[1] + '*.xml')
                 else:
-                    xml_list = glob.glob(sys.argv[1] + '\*.xml')
+                    if platform == "linux" or platform == "linux2":
+                        xml_list = glob.glob(sys.argv[1] + '/*.xml')
+                    else:
+                        xml_list = glob.glob(sys.argv[1] + '\*.xml')
                 if len(xml_list) > 0:
                     print ('Saving results to: ' + sys.argv[2] + '\n')
                     doWork(xml_list,sys.argv[2])
