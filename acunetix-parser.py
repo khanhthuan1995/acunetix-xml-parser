@@ -38,7 +38,7 @@ def doWork(xml_list,ouputfile):
     files_skipped = 0
     
     wb = workbook.Workbook()
-    ws = wb.create_sheet(title='Vulnerabilities')
+    ws = wb.active
     columns = ['UniqueID','Timestamp','StartURL','WebServer','Issue Type','Name','Risk Rating','Description','DetailedInformation','Details','Affects','Impact','Recommendation','References','Request','Response','Is False Positive', 'CVSS Vector', 'CVSS Score','CVSS3 Vector', 'CVSS3 Score']
     for i in range(len(columns)):
         ws.cell(row=1, column=i+1, value=columns[i])
